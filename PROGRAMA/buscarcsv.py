@@ -27,7 +27,7 @@ def buscar_palabra(ruta,dicc):
                             break
     return lista
 
-def escribir_excel(datos,camposExcel):
+def escribir_excel(datos,camposExcel,nomArchivo):
     # CODIGO PARA PONER EN HOJA DE EXCEL
 
     workbook = openpyxl.load_workbook('formato.xlsx')
@@ -37,7 +37,7 @@ def escribir_excel(datos,camposExcel):
         #PONER EN LA HOJA DE EXCEL LOS DATOS CORRRESPONDIENTES
         hoja[camposExcel[i]] = datos[i]
 
-    workbook.save('formato.xlsx')
+    workbook.save(nomArchivo)
     return
 
 # DICCIONARIO VACIO CON  VALORES QUE SE BUSCARAN EN LA HOJA CSV
@@ -67,46 +67,32 @@ camposmonitor = ["G26","Z26","Z27"]
 camposred = ["Y36"]
 campossistema = ["K42"]
 
-ruta = "COMUNICACIONES2.CSV"
+ruta = "C:\\Users\\Area Sistemas HDS\\Desktop\\hoja-vida-equipos-main\\hoja-vida-equipos-main\\PROGRAMA\\archivoscsv\\COMUNICACIONES2.CSV"
+# ruta = "archivoscsv\COMUNICACIONES2.CSV"
+# TOMA EL NOMBRE DEL ARCHIVO SIN EXTENCIONES
+nomArchivo = ruta[:-4]
+nomArchivo = nomArchivo + ".xlsx"
 lista_final = buscar_palabra(ruta,equipo)
-escribir_excel(lista_final,camposequipo) # Impresion en archivo de excel
+escribir_excel(lista_final,camposequipo,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,cpu)
-escribir_excel(lista_final,camposcpu) # Impresion en archivo de excel
+escribir_excel(lista_final,camposcpu,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,procesador)
-escribir_excel(lista_final,camposprocesador) # Impresion en archivo de excel
+escribir_excel(lista_final,camposprocesador,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,ram1)
-escribir_excel(lista_final,camposram1) # Impresion en archivo de excel
+escribir_excel(lista_final,camposram1,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,ram2)
-escribir_excel(lista_final,camposram2) # Impresion en archivo de excel
+escribir_excel(lista_final,camposram2,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,disco)
-escribir_excel(lista_final,camposdisco) # Impresion en archivo de excel
+escribir_excel(lista_final,camposdisco,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,cd)
-escribir_excel(lista_final,camposcd) # Impresion en archivo de excel
+escribir_excel(lista_final,camposcd,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,monitor)
-escribir_excel(lista_final,camposmonitor) # Impresion en archivo de excel
+escribir_excel(lista_final,camposmonitor,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,red)
-escribir_excel(lista_final,camposred) # Impresion en archivo de excel
+escribir_excel(lista_final,camposred,nomArchivo) # Impresion en archivo de excel
 lista_final = buscar_palabra(ruta,sistema) 
-escribir_excel(lista_final,campossistema) # Impresion en archivo de excel
+escribir_excel(lista_final,campossistema,nomArchivo) # Impresion en archivo de excel
 print("PROCESO FINALIZADO")
-
-
-
-
-
-
-# CODIGO PARA PONER EN HOJA DE EXCEL
-
-# workbook = openpyxl.load_workbook('formato.xlsx')
-# hoja = workbook['HOJA DE VIDA DE EQUIPOS']
-
-# for i, elemento in enumerate(dicc_final):
-#     #PONER EN LA HOJA DE EXCEL LOS DATOS CORRRESPONDIENTES
-#     # hoja.cell(row=,column=).value=
-#     print(elemento)
-#     hoja.cell(row=73+i+1, column=1).value = elemento
-
-# workbook.save('formato.xlsx')
 
 
 
